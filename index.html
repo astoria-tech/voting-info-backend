@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      fetch(
+        "https://findmypollsite.vote.nyc/api/pollsiteinfo?latitude=40.76907531192422&longitude=undefined&county=Queens&streetnumber=25-32&streetname=35%20Street&postalcode=11103&districtkey=019/36",
+        {
+          credentials: "omit",
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0",
+            Accept: "*/*",
+            "Accept-Language": "en-US,en;q=0.5",
+            "X-Requested-With": "XMLHttpRequest",
+            Pragma: "no-cache",
+            "Cache-Control": "no-cache",
+            "Access-Control-Allow-Origin": "localhost:8000",
+          },
+          referrer: "https://findmypollsite.vote.nyc/",
+          method: "GET",
+          mode: "cors",
+        }
+      )
+        .then((r) => r.json())
+        .then((data) => console.log(data));
+    </script>
+  </body>
+</html>
