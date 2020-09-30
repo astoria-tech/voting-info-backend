@@ -7,28 +7,34 @@
   </head>
   <body>
     <script>
-      fetch(
-        "https://findmypollsite.vote.nyc/api/pollsiteinfo?latitude=40.76907531192422&longitude=undefined&county=Queens&streetnumber=25-32&streetname=35%20Street&postalcode=11103&districtkey=019/36",
-        {
-          credentials: "omit",
-          headers: {
-            "User-Agent":
-              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:80.0) Gecko/20100101 Firefox/80.0",
-            Accept: "*/*",
-            "Accept-Language": "en-US,en;q=0.5",
-            "X-Requested-With": "XMLHttpRequest",
-            Pragma: "no-cache",
-            "Cache-Control": "no-cache",
-            "Access-Control-Allow-Origin": "https://findmypollsite.vote.nyc/",
-            "Access-Control-Allow-Headers": "*",
-          },
-          referrer: "https://findmypollsite.vote.nyc/",
-          method: "GET",
-          mode: "cors",
-        }
-      )
-        .then((r) => r.json())
-        .then((data) => console.log(data));
+      //   curl 'https://findmypollsite.vote.nyc/api/pollsiteinfo?latitude=40.76907531192422&longitude=undefined&county=Queens&streetnumber=25-32&streetname=35%20Street&postalcode=11103&districtkey=019/36' -H 'Referer: https://findmypollsite.vote.nyc/'
+
+      const getData = async () => {
+        const data = await fetch(
+          "https://findmypollsite.vote.nyc/api/pollsiteinfo?latitude=40.76907531192422&longitude=undefined&county=Queens&streetnumber=25-32&streetname=35%20Street&postalcode=11103&districtkey=019/36",
+          {
+            credentials: "omit",
+            headers: {
+              Accept: "*/*",
+              "Accept-Language": "en-US,en;q=0.5",
+            },
+            Referer: "https://findmypollsite.vote.nyc/",
+            method: "GET",
+            mode: "cors",
+          }
+        );
+        // await fetch(
+        //   "https://findmypollsite.vote.nyc/api/pollsiteinfo?latitude=40.76907531192422&longitude=undefined&county=Queens&streetnumber=25-32&streetname=35%20Street&postalcode=11103&districtkey=019/36",
+        //   {
+        //     headers: {},
+        //     Referer: "https://findmypollsite.vote.nyc/",
+        //     method: "GET",
+        //     mode: "no-cors",
+        //   }
+        // );
+        console.log(data);
+      };
+      getData();
     </script>
   </body>
 </html>
