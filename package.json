@@ -7,6 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/astoria-tech/voting-info-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/astoria-tech/voting-info-backend/issues"
+  },
+  "homepage": "https://github.com/astoria-tech/voting-info-backend",
   "dependencies": {
     "axios": "^0.20.0",
     "express": "^4.17.1"
