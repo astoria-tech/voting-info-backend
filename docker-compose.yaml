@@ -4,5 +4,7 @@ services:
     labels:
       shipyard.route: "/api"
     build: .
+    volumes:
+      - ".:/srv/src"
     ports:
       - "3000:3000"
