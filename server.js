@@ -9,11 +9,9 @@ const app = express();
 const pollingData = (streetNumber, streetName) =>
   `https://findmypollsite.vote.nyc/api/pollsiteinfo?county=Queens&streetnumber=${streetNumber}&streetname=${streetName}`;
 
-app.get('/', async (req, res) => {
-  const { streetNumber } = req.query;
-  const { streetName } = req.query;
+app.get('/api/v1/pollsite/:number/:name', async (req, res) => {
   const apiResponse = await axios
-    .get(pollingData(streetNumber, streetName), {
+    .get(pollingData(req.params.number, req.params.name), {
       headers: {
         Referer: 'https://findmypollsite.vote.nyc/',
       },
@@ -21,7 +19,7 @@ app.get('/', async (req, res) => {
     .catch(err => {
       if (err) res.send(err);
     });
-  res.send(apiResponse.data);
+  res.json(apiResponse.data.json());
 });
 app.listen(port, host, () => {
   console.log(`${host} listening on ${port}`);
